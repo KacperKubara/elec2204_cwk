@@ -1,10 +1,9 @@
-#include "configure.h"
 #include "pc.h"
 
-pc::pc(int count){
-    counter = count;
+Pc::Pc(int count, int base_address){
+    counter = count + base_address;
 }
 
-int pc::increment(){
+int Pc::increment(){
    return counter += 4;
 }
