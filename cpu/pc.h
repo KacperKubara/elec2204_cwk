@@ -10,6 +10,6 @@ class Pc
 
     // constructor
     Pc(int count, int base_address);
-    // incrementer
+    // increments the counter
     int increment(void);
 };
