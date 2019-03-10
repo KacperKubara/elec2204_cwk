@@ -9,7 +9,13 @@ Ram::Ram()
 Ram::Ram(bool is_hardcoded)
 {
     if (is_hardcoded)
-        int ram[RAM_SIZE] = ram_hardcoded;
+    {
+        for (int i = 0; i < RAM_SIZE; i++)
+        {
+            ram[i] = ram_hardcoded[i];
+        }
+    }
+
     else
         int ram[RAM_SIZE] = {};
 }
