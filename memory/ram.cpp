@@ -37,11 +37,11 @@ int Ram::read(int n)
     return ram[n];
 }
 
-bool write(int n, int value)
+bool Ram::write(int n, int value)
 {
     if (n < RAM_SIZE && n >= 0)
     {
-        Ram::ram[n] = value;
+        ram[n] = value;
         return true;
     }
     else

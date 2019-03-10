@@ -6,10 +6,12 @@ class Ir
     public:
     // fetched op code
     int op_code;
-    // register 1
-    int reg1;
-    // register 2
-    int reg2;
+    // source Register rs0
+    int rs0;
+    // source Register rs1
+    int rs1;
+    // destination Register rd
+    int rd;
  
     // constructor
     Ir(int count, int base_address);

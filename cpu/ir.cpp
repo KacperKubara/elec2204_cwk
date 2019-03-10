@@ -44,6 +44,7 @@ void Ir::set_op(int reg_content)
 
 void Ir::set_regs(int reg_content)
 {
-    reg1 = 0x00FFF    & (reg_content>>3*4);
-    reg2 = 0x00000FFF & reg_content;
+    rs0 = 0x00FF    & (reg_content>>4*4);
+    rs1 = 0x0000FF  & reg_content>>2*4;
+    rd  = 0;
 }
