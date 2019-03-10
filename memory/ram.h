@@ -12,6 +12,8 @@ class Ram
     
     // default constructor
     Ram();
+    // Ram with hardcoded values
+    Ram(bool is_hardcoded);
     // constructor with a new ram content
     Ram(int new_ram[RAM_SIZE]);
     // return the program base address of RAM

@@ -1,0 +1,3 @@
+int ram_hardcoded = {
+
+}

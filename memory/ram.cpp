@@ -1,8 +1,17 @@
 #include "ram.h"
+#include "../hardcoded.cpp"
 
 Ram::Ram()
 {
     int ram[RAM_SIZE] = {}; // initialise array with 0 values
+}
+
+Ram::Ram(bool is_hardcoded)
+{
+    if (is_hardcoded)
+        int ram[RAM_SIZE] = ram_hardcoded;
+    else
+        int ram[RAM_SIZE] = {};
 }
 
 Ram::Ram(int new_ram[RAM_SIZE])
