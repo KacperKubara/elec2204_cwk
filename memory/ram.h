@@ -2,7 +2,7 @@
 RAM Specification:
 Size: 256 Bytes (64 words)
 */
-#include "configure.h"
+#include "../configure.h"
 
 class Ram
 {

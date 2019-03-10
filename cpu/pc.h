@@ -1,4 +1,4 @@
-#include "configure.h"
+#include "../configure.h"
 
 class Pc
 {

@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN // This tells Catch to provide a main()
 
 #include "catch.hpp"     // library for unit tests
-#include "ir.h" //class to be tested
+#include "../cpu/ir.h" //class to be tested
 
 using namespace std;
 
