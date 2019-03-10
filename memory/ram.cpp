@@ -13,9 +13,14 @@ Ram::Ram(int new_ram[RAM_SIZE])
     }
 }
 
-int *Ram::base_address(void)
+int *Ram::base_address_data(void)
 {
-    return &ram[0];
+    return &ram[RAM_DATA];
+}
+
+int *Ram::base_address_program(void)
+{
+    return &ram[RAM_PROGRAM];
 }
 
 int Ram::read(int n)

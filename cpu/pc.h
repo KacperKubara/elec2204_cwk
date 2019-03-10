@@ -6,10 +6,13 @@ class Pc
     
     // program counter
     int counter;
-    int base_address; // base_address of RAM
+    // base_address of RAM
+    int base_address; 
 
     // constructor
     Pc(int count, int base_address);
     // increments the counter
     int increment(void);
+    // gets counter
+    int get_counter(void);
 };
