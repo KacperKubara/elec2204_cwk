@@ -3,7 +3,7 @@
 
 class Ir
 {
-    public:
+  public:
     // fetched op code
     int op_code;
     // source Register rs0
@@ -12,7 +12,9 @@ class Ir
     int rs1;
     // destination Register rd
     int rd;
- 
+    // hardcoded ram for testing purposes
+    unsigned int ram[RAM_SIZE];
+
     // constructor
     Ir(int count, int base_address);
     // increment pc and sets new instruction
@@ -24,8 +26,7 @@ class Ir
     // update reg1 and reg2
     void set_regs(int reg_content);
 
-    private:
+  private:
     // connect Pc to Ir
     Pc programCounter;
-
 };

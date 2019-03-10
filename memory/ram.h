@@ -16,8 +16,6 @@ class Ram
     Ram(bool is_hardcoded);
     // constructor with a new ram content
     Ram(int new_ram[RAM_SIZE]);
-    // return the program base address of RAM
-    int *base_address_program(void);
     // return the data base address of RAM
     int *base_address_data(void);
     // return the value of the memory cell

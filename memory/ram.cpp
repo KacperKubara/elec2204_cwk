@@ -33,11 +33,6 @@ int *Ram::base_address_data(void)
     return &ram[RAM_DATA_ADDRESS];
 }
 
-int *Ram::base_address_program(void)
-{
-    return &ram[RAM_PROGRAM_ADDRESS];
-}
-
 int Ram::read(int n)
 {
     return ram[n];
