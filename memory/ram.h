@@ -8,7 +8,7 @@ class Ram
 {
     public:
     // physical memory
-    static int ram[RAM_SIZE]; // array with 0 values
+    int ram[RAM_SIZE]; // array with 0 values
     
     // default constructor
     Ram();

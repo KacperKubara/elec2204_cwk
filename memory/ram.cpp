@@ -3,7 +3,10 @@
 
 Ram::Ram()
 {
-    int ram[RAM_SIZE] = {}; // initialise array with 0 values
+    for (int i = 0; i < RAM_SIZE; i++)
+    {
+        ram[i] = 0;
+    }
 }
 
 Ram::Ram(bool is_hardcoded)
@@ -17,14 +20,17 @@ Ram::Ram(bool is_hardcoded)
     }
 
     else
-        int ram[RAM_SIZE] = {};
+        for (int i = 0; i < RAM_SIZE; i++)
+        {
+            ram[i] = 0;
+        }
 }
 
 Ram::Ram(int new_ram[RAM_SIZE])
 {
     for (int i = 0; i < RAM_SIZE; i++)
     {
-        Ram::ram[i] = new_ram[i];
+        ram[i] = new_ram[i];
     }
 }
 
