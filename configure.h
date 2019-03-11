@@ -26,6 +26,10 @@ OP Code
 RAM
 Size: 256 Bytes (64 words)
 0-15  => Core Regs
+{
+    0    => PC
+    1-15 => Core regs
+}
 16-31 => Data
 32-64 => Program Data
 //////////////////

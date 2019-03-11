@@ -7,6 +7,7 @@ Ir::Ir(int count, int base_address) : programCounter(count, base_address)
 void Ir::get_ram(Ram &ram_object)
 {
     ram = ram_object;
+    programCounter.get_ram(ram_object);
 }
 void Ir::get_next_instruction(void)
 {

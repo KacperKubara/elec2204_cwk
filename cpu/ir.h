@@ -1,6 +1,5 @@
 #include "../configure.h"
 #include "pc.h"
-#include "../memory/ram.h"
 
 class Ir
 {
