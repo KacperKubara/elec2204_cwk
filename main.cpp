@@ -1,4 +1,5 @@
-#include <string.h>
+#include <string>
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include "configure.h"
@@ -42,14 +43,17 @@ void read_data(void)
     file.close();
 }
 int parse_assembly(string data)
-{   char *c_data = data.c_str();
-    char *opcode;
+{   
+    istringstream s(data);
+    string buffer;
+    string opcode;
     int op_code;
     int rs1;
     int rs0;
     int rd;
 
-    opcode = strtok(c_data, " ");
+    s >> buffer;
+    opcode = buffer;
 
     if(opcode == "LD")  op_code = 0x00;
     if(opcode == "STR") op_code = 0x01;
@@ -59,9 +63,12 @@ int parse_assembly(string data)
     if(opcode == "DIV") op_code = 0x05;
     if(opcode == "END") op_code = 0x0F;
 
-    rs1 = stoi(strtok(NULL, " "));
-    rs0 = stoi(strtok(NULL, " "));
-    rd  = stoi(strtok(NULL, " "));
+    s >> buffer;
+    rs1 = stoi(buffer);
+    s >> buffer;
+    rs0 = stoi(buffer);
+    s >> buffer;
+    rd  = stoi(buffer);
 
     op_code = op_code << 6*4;
     rs1 = rs1 << 4*4;
