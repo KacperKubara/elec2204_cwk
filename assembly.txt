@@ -2,5 +2,5 @@ ADD 3 1 2
 SUB 4 2 1
 MLT 5 1 2
 DIV 6 2 1
-STR 7 X 1
-LD  3 X 8
+STR 7 0 1
+LD  3 0 8
