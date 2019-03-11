@@ -35,8 +35,6 @@ void read_data(void)
         if (i >= 31)
             break;
         temp = parse_assembly(buffer);
-        cout << buffer << endl;
-        cout << std::hex << temp << endl;
         update_program_data(i, temp);
         i++;
     }
@@ -75,7 +73,7 @@ int parse_assembly(string data)
     s >> buffer;
     rs0 = stoi(buffer);
     s >> buffer;
-    rd  = stoi(buffer);
+    rd = stoi(buffer);
 
     op_code = op_code << 6 * 4;
     rs1 = rs1 << 4 * 4;
@@ -84,8 +82,11 @@ int parse_assembly(string data)
     return (op_code | rs1 | rs0 | rd);
 }
 void update_program_data(int n, int data)
-{   
+{
     bool success = true;
+    int read;
     success = cpu0.ram.write(n + RAM_PROGRAM_ADDRESS, data);
-    if (!success) cout<<"Error when writing program data!"<<endl;
+    read = cpu0.ram.read(n + RAM_PROGRAM_ADDRESS);
+    //cout << "Ram Write: " << std::hex << data << " Ram Read: " << std::hex << read << endl;
+    if (!success) cout << "Error when writing program data!" << endl;
 }
