@@ -9,7 +9,7 @@ class Cpu
     const int clock_freq = CLOCK_SPEED;
     // alu computation result
     int alu_result;
-    
+
     // constructor
     Cpu(int count, int base_address);
     
@@ -19,8 +19,7 @@ class Cpu
     void execute_instruction(void);
     // increment opcode and update regs
     void fetch(void); 
-    // save ALU result to memory
-    void save_result(int result);
+    
     // connect IR with PC to Cpu
     Ir ir;
     // connect ALU to Cpu

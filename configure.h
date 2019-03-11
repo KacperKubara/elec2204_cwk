@@ -15,8 +15,8 @@ Number_Type: Integer
 24-31 => rd
 //////////////////
 OP Code
-0x00 - Load     |rs0  --> rd|
-0x01 - Store    |rs0  <-- rd|
+0x00 - Load     |rs0  <-- rd|
+0x01 - Store    |rs0  --> rd|
 0x02 - Add      |rs0 + rs1 --> rd|
 0x03 - Subtract |rs0 - rs1 --> rd|
 0x04 - Multiply |rs0 * rs1 --> rd|

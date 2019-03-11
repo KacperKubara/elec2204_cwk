@@ -18,23 +18,23 @@ void Cpu::fetch()
 {
     ir.get_next_instruction();
 }
+
 void Cpu::execute_instruction()
 {
     if (ir.op_code == 0)
     {
-        ;
+        int temp = ram.read(ir.rd);
+        ram.write(ir.rs0, temp);
     }
     if (ir.op_code == 1)
     {
-        ;
+        int temp = ram.read(ir.rs0);
+        ram.write(ir.rd, temp);
     }
     if (ir.op_code >= 2 && ir.op_code <= 5)
     {
         alu_result = alu.output_result(ir.op_code, ir.rs0, ir.rs1);
-        save_result(alu_result);
+        ram.write(ir.rd, alu_result);
     }
 }
-void Cpu::save_result(int result)
-{
-    ;
-}
+
