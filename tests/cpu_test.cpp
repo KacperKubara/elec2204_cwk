@@ -22,22 +22,49 @@ TEST_CASE("CPU Test")
         REQUIRE(cpu0.ir.programCounter.get_counter() == RAM_PROGRAM_ADDRESS);
         REQUIRE(cpu0.ir.programCounter.counter == RAM_PROGRAM_ADDRESS);
 
-        SECTION("CPU Execute Cycle Test")
+        // Ram test
+        REQUIRE(cpu0.ram.read(2) == 7);
+        REQUIRE(cpu0.ram.write(3, 10) == true);       
+        REQUIRE(cpu0.ram.read(3) == 10);
+
+        SECTION("CPU Execute Cycle 1 Test - Add")
         {
             cpu0.execute_cycle();
             REQUIRE(cpu0.ir.programCounter.counter == RAM_PROGRAM_ADDRESS);
-            REQUIRE(cpu0.ir.op_code == 0x00);
-            REQUIRE(cpu0.ir.rs0 == 0x01);
-            REQUIRE(cpu0.ir.rs1 == 0x02);
+            REQUIRE(cpu0.ir.op_code == 0x02);
+            REQUIRE(cpu0.ir.rs1 == 0x01);
+            REQUIRE(cpu0.ir.rs0 == 0x02);
             REQUIRE(cpu0.ir.rd == 0x03);
-            SECTION("CPU Execute Cycle Test 2")
+            REQUIRE(cpu0.ram.read(3) == 10);
+            SECTION("CPU Execute Cycle 2 Test - Subtract")
             {
                 cpu0.execute_cycle();
                 REQUIRE(cpu0.ir.programCounter.counter == RAM_PROGRAM_ADDRESS + 1);
-                REQUIRE(cpu0.ir.op_code == 0x01);
-                REQUIRE(cpu0.ir.rs0 == 0x02);
-                REQUIRE(cpu0.ir.rs1 == 0x03);
+                REQUIRE(cpu0.ir.op_code == 0x03);
+                REQUIRE(cpu0.ir.rs1 == 0x02);
+                REQUIRE(cpu0.ir.rs0 == 0x01);
                 REQUIRE(cpu0.ir.rd == 0x04);
+                REQUIRE(cpu0.ram.read(4) == 4);
+                SECTION("CPU Execute Cycle 3 - Multiply")
+                {
+                    cpu0.execute_cycle();
+                    REQUIRE(cpu0.ir.programCounter.counter == RAM_PROGRAM_ADDRESS + 2);
+                    REQUIRE(cpu0.ir.op_code == 0x04);
+                    REQUIRE(cpu0.ir.rs1 == 0x01);
+                    REQUIRE(cpu0.ir.rs0 == 0x02);
+                    REQUIRE(cpu0.ir.rd == 0x05);
+                    REQUIRE(cpu0.ram.read(5) == 21);
+                    SECTION("CPU Execute Cycle 4 Test - Divide")
+                    {
+                        cpu0.execute_cycle();
+                        REQUIRE(cpu0.ir.programCounter.counter == RAM_PROGRAM_ADDRESS + 3);
+                        REQUIRE(cpu0.ir.op_code == 0x05);
+                        REQUIRE(cpu0.ir.rs1 == 0x02);
+                        REQUIRE(cpu0.ir.rs0 == 0x01);
+                        REQUIRE(cpu0.ir.rd == 0x06);
+                        REQUIRE(cpu0.ram.read(6) == 2);
+                    }
+                }
             }
         }
     }

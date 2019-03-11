@@ -39,7 +39,9 @@ void Cpu::execute_instruction()
     }
     if (ir.op_code >= 2 && ir.op_code <= 5)
     {
-        alu_result = alu.output_result(ir.op_code, ir.rs0, ir.rs1);
+        int val1 = ram.read(ir.rs1);
+        int val0 = ram.read(ir.rs0);
+        alu_result = alu.output_result(ir.op_code, val1, val0);
         ram.write(ir.rd, alu_result);
     }
 }

@@ -25,10 +25,6 @@ TEST_CASE("RAM Test")
                 REQUIRE(ram0.read(0) == 0xDEADBEEF);
             }
         }
-        SECTION("Hardcoded RAM Base Address Test")
-        {
-            REQUIRE(ram0.base_address_data() != 0);
-        }
     }
     SECTION("Default RAM Test")
     {
@@ -41,16 +37,12 @@ TEST_CASE("RAM Test")
         }
         SECTION("Default RAM Write Test")
         {
-            REQUIRE(ram1.write(0, 0xDEADBEEF) == true);
+            REQUIRE(ram1.write(0, 0xBEEFBEEF) == true);
 
             SECTION("Default RAM Read after Write Test")
             {
-                REQUIRE(ram1.read(0) == 0xDEADBEEF);
+                REQUIRE(ram1.read(0) == 0xBEEFBEEF);
             }
-        }
-        SECTION("0 RAM Base Address Test")
-        {
-            REQUIRE(ram1.base_address_data() != 0);
         }
     }
         SECTION("False RAM Test")
@@ -64,16 +56,12 @@ TEST_CASE("RAM Test")
         }
         SECTION("False RAM Write Test")
         {
-            REQUIRE(ram2.write(0, 0xDEADBEEF) == true);
+            REQUIRE(ram2.write(0, 0xDEAD0000) == true);
 
             SECTION("False RAM Read after Write Test")
             {
-                REQUIRE(ram2.read(0) == 0xDEADBEEF);
+                REQUIRE(ram2.read(0) == 0xDEAD0000);
             }
-        }
-        SECTION("0 RAM Base Address Test")
-        {
-            REQUIRE(ram2.base_address_data() != 0);
         }
     }
 }

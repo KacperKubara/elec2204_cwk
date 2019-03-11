@@ -29,7 +29,7 @@ void Ir::set_op(int reg_content)
 
 void Ir::set_regs(int reg_content)
 {
-    rs0 = 0xFF & (reg_content >> 4 * 4);
-    rs1 = 0xFF & (reg_content >> 2 * 4);
+    rs1 = 0xFF & (reg_content >> 4 * 4);
+    rs0 = 0xFF & (reg_content >> 2 * 4);
     rd  = 0xFF & (reg_content);
 }
