@@ -8,7 +8,7 @@ using namespace std;
 
 TEST_CASE("CPU Test"){
     Cpu cpu0(0, RAM_PROGRAM_ADDRESS);
-    SECTION("CPU Test 0"){
+    SECTION("CPU Test"){
         REQUIRE(cpu0.alu_result == 0);
     }
 }

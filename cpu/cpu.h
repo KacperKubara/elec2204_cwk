@@ -1,7 +1,6 @@
 #include "../configure.h"
 #include "ir.h"
 #include "alu.h"
-#include "../memory/ram.h"
 class Cpu
 {
     public:
