@@ -2,11 +2,12 @@
 #define BASE_ADDRESS 0 // start address of PC
 #define RAM_SIZE 64    // no. 32 bit registers
 #define RAM_DATA_ADDRESS 0     // start address of data in RAM 
-#define RAM_PROGRAM_ADDRESS 32 // start address of program in RAM
+#define RAM_PROGRAM_ADDRESS 32 // start address of program data in RAM
 /*
 SPECIFICATIONS
 //////////////////
-Word_Size: 32 bits
+Word_Size  : 32 bits
+Number_Type: Integer
 0-7   => OP Code
 8-15  => rs0
 16-23 => rs1
