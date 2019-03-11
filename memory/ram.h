@@ -16,6 +16,7 @@ class Ram
     Ram(bool is_hardcoded);
     // constructor with a new ram content
     Ram(unsigned int new_ram[RAM_SIZE]);
+
     // return the value of the memory cell
     int read(int n); 
     // return true if write is successfull  
