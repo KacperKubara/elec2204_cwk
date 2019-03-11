@@ -8,7 +8,7 @@
 using namespace std;
 
 // globally defined cpu instance
-//Cpu cpu0(0, RAM_PROGRAM_ADDRESS);
+Cpu cpu0(0, RAM_PROGRAM_ADDRESS);
 
 // read data from .txt file
 void read_data(void);
@@ -37,13 +37,13 @@ void read_data(void)
         temp = parse_assembly(buffer);
         cout << buffer << endl;
         cout << std::hex << temp << endl;
-        update_program_data(temp, i);
+        update_program_data(i, temp);
         i++;
     }
     file.close();
 }
 int parse_assembly(string data)
-{   
+{
     istringstream s(data);
     string buffer;
     string opcode;
@@ -55,13 +55,20 @@ int parse_assembly(string data)
     s >> buffer;
     opcode = buffer;
 
-    if(opcode == "LD")  op_code = 0x00;
-    if(opcode == "STR") op_code = 0x01;
-    if(opcode == "ADD") op_code = 0x02;
-    if(opcode == "SUB") op_code = 0x03;
-    if(opcode == "MLT") op_code = 0x04;
-    if(opcode == "DIV") op_code = 0x05;
-    if(opcode == "END") op_code = 0x0F;
+    if (opcode == "LD")
+        op_code = 0x00;
+    if (opcode == "STR")
+        op_code = 0x01;
+    if (opcode == "ADD")
+        op_code = 0x02;
+    if (opcode == "SUB")
+        op_code = 0x03;
+    if (opcode == "MLT")
+        op_code = 0x04;
+    if (opcode == "DIV")
+        op_code = 0x05;
+    if (opcode == "END")
+        op_code = 0x0F;
 
     s >> buffer;
     rs1 = stoi(buffer);
@@ -70,13 +77,15 @@ int parse_assembly(string data)
     s >> buffer;
     rd  = stoi(buffer);
 
-    op_code = op_code << 6*4;
-    rs1 = rs1 << 4*4;
-    rs0 = rs0 << 2*4;
+    op_code = op_code << 6 * 4;
+    rs1 = rs1 << 4 * 4;
+    rs0 = rs0 << 2 * 4;
 
-    return (op_code | rs1 | rs0 | rd );
+    return (op_code | rs1 | rs0 | rd);
 }
-void update_program_data(int data, int n)
-{
-    ;
+void update_program_data(int n, int data)
+{   
+    bool success = true;
+    success = cpu0.ram.write(n + RAM_PROGRAM_ADDRESS, data);
+    if (!success) cout<<"Error when writing program data!"<<endl;
 }
