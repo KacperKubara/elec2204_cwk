@@ -8,6 +8,8 @@ class Cpu
     const int clock_freq = CLOCK_SPEED;
     // alu computation result
     int alu_result;
+    // flag to determine if execute_cycle is run for the 1st time
+    bool first_run;
 
     // constructor
     Cpu(int count, int base_address);

@@ -4,6 +4,7 @@ Cpu::Cpu(int count, int base_address) : ir(count, base_address), alu(), ram(true
 {
     // fix it
     alu_result = 0;
+    first_run = true;
     ir.get_ram(ram);
     ir.get_instruction();
 }
@@ -16,7 +17,12 @@ void Cpu::execute_cycle(void)
 
 void Cpu::fetch()
 {
-    ir.get_next_instruction();
+    if (first_run == false)
+    {
+        ir.get_next_instruction();
+    }
+    
+    else first_run = false; 
 }
 
 void Cpu::execute_instruction()
@@ -37,4 +43,3 @@ void Cpu::execute_instruction()
         ram.write(ir.rd, alu_result);
     }
 }
-
