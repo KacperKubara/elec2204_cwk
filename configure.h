@@ -28,9 +28,10 @@ Size: 256 Bytes (64 words)
 0-15  => Core Regs
 {
     0    => PC
-    1-15 => Core regs
+    1-4  => Core regs
+    5-15 => Temp regs (t0,t1,...)
 }
-16-31 => Data
+16-31 => Data (s0,s1,...)
 32-64 => Program Data
 //////////////////
 */
