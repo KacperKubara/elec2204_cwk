@@ -1,7 +1,8 @@
 #define CLOCK_SPEED 1  // [Hz]
 #define BASE_ADDRESS 0 // start address of PC
 #define RAM_SIZE 64    // no. 32 bit registers
-#define RAM_DATA_ADDRESS 0     // start address of data in RAM 
+#define RAM_CORE_REGS 0// Ram core regs
+#define RAM_DATA_ADDRESS 16    // start address of data in RAM 
 #define RAM_PROGRAM_ADDRESS 32 // start address of program data in RAM
 /*
 SPECIFICATIONS

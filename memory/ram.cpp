@@ -26,7 +26,7 @@ Ram::Ram(bool is_hardcoded)
         }
 }
 
-Ram::Ram(int new_ram[RAM_SIZE])
+Ram::Ram(unsigned int new_ram[RAM_SIZE])
 {
     for (int i = 0; i < RAM_SIZE; i++)
     {
@@ -34,10 +34,6 @@ Ram::Ram(int new_ram[RAM_SIZE])
     }
 }
 
-int *Ram::base_address_data(void)
-{
-    return &ram[RAM_DATA_ADDRESS];
-}
 
 int Ram::read(int n)
 {

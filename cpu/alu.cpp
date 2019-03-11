@@ -1,4 +1,8 @@
 #include "alu.h"
+Alu::Alu()
+{
+    signal = 0;
+}
 
 int Alu::output_result(int opcode, int val1, int val0)
 {

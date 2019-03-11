@@ -3,7 +3,10 @@
 class Alu
 {   
     public:
-    bool signal = 0; // 0 -wrong opcode, 1 - correct opcode, result ready
+    // 0 - wrong opcode, 1 - correct opcode, result ready   
+    bool signal; 
+    // constructor
+    Alu();
     // output result
     int output_result(int opcode, int val1, int val0);
     // sum function

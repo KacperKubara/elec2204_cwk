@@ -1,9 +1,12 @@
 #include "../configure.h"
 #include "pc.h"
+#include "../memory/ram.h"
 
 class Ir
 {
   public:
+    // ram constructor
+    Ram ram;
     // fetched op code
     int op_code;
     // source Register rs0
@@ -12,21 +15,21 @@ class Ir
     int rs1;
     // destination Register rd
     int rd;
-    // hardcoded ram for testing purposes
-    unsigned int ram[RAM_SIZE];
+
 
     // constructor
     Ir(int count, int base_address);
-    // increment pc and sets new instruction
-    void set_next_instruction(void);
-    // sets instruction
-    void set_instruction(void);
+    // get ram object by refernce
+    void get_ram(Ram &ram_object);
+    // increment pc and get new instruction
+    void get_next_instruction(void);
+    // get instruction
+    void get_instruction(void);
     // update op code
     void set_op(int reg_content);
     // update reg1 and reg2
     void set_regs(int reg_content);
 
-  private:
     // connect Pc to Ir
     Pc programCounter;
 };

@@ -8,16 +8,14 @@ class Ram
 {
     public:
     // physical memory
-    int ram[RAM_SIZE]; // array with 0 values
+    unsigned int ram[RAM_SIZE]; // array with 0 values
     
     // default constructor
     Ram();
     // Ram with hardcoded values
     Ram(bool is_hardcoded);
     // constructor with a new ram content
-    Ram(int new_ram[RAM_SIZE]);
-    // return the data base address of RAM
-    int *base_address_data(void);
+    Ram(unsigned int new_ram[RAM_SIZE]);
     // return the value of the memory cell
     int read(int n); 
     // return true if write is successfull  
