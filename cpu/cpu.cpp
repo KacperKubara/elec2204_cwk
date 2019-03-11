@@ -5,6 +5,7 @@ Cpu::Cpu(int count, int base_address) : ir(count, base_address), alu(), ram(true
     // fix it
     alu_result = 0;
     ir.get_ram(ram);
+    ir.get_instruction();
 }
 
 void Cpu::execute_cycle(void)
