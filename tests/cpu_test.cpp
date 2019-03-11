@@ -29,7 +29,16 @@ TEST_CASE("CPU Test")
             REQUIRE(cpu0.ir.op_code == 0x00);
             REQUIRE(cpu0.ir.rs0 == 0x01);
             REQUIRE(cpu0.ir.rs1 == 0x02);
-            REQUIRE(cpu0.ir.rd  == 0x03);
+            REQUIRE(cpu0.ir.rd == 0x03);
+            SECTION("CPU Execute Cycle Test 2")
+            {
+                cpu0.execute_cycle();
+                REQUIRE(cpu0.ir.programCounter.counter == RAM_PROGRAM_ADDRESS + 1);
+                REQUIRE(cpu0.ir.op_code == 0x01);
+                REQUIRE(cpu0.ir.rs0 == 0x02);
+                REQUIRE(cpu0.ir.rs1 == 0x03);
+                REQUIRE(cpu0.ir.rd == 0x04);
+            }
         }
     }
 }
