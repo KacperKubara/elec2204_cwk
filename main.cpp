@@ -69,7 +69,7 @@ int parse_assembly(string data)
         op_code = 0x06;
     if (opcode == "BGE")
         op_code = 0x07;
-    if (opcode == "J")
+    if (opcode == "JI")
         op_code = 0x08;
     if (opcode == "ADDI")
         op_code = 0x09;

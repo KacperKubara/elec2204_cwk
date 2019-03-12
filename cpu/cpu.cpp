@@ -46,9 +46,9 @@ void Cpu::execute_instruction()
     }
     if (ir.op_code == 6)
     {
-        int val1 = ram.read(ir.rs1);
-        int counter = ram.read(PC_ADDRESS);
-        ram.write(ir.rd, counter + val1);
+        int loop_size = ram.read(ir.rs1);
+        int counter   = ram.read(PC_ADDRESS);
+        ram.write(RA_ADDRESS, counter + loop_size);
     }
     if (ir.op_code == 7)
     {

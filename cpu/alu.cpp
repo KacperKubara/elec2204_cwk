@@ -59,10 +59,10 @@ int Alu::divide(int val1, int val0)
     return val1 / val0;
 }
 
-bool bge(int val1, int val0)
+int Alu::bge(int val1, int val0)
 {
     if (val1 >= val0)
-        return true;
+        return 1;
     else
-        return false;
+        return 0;
 }

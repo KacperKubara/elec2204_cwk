@@ -17,17 +17,17 @@ Number_Type: Integer
 24-31 => rd
 //////////////////
 OP Code
-0x00 - Load     |rs1  <-- rd|
-0x01 - Store    |rs1  --> rd|
-0x02 - Add      |rs1 + rs0 --> rd|
-0x03 - Subtract |rs1 - rs0 --> rd|
-0x04 - Multiply |rs1 * rs0 --> rd|
-0x05 - Divide   |rs1 / rs0 --> rd|
-0x06 - LOOP     |rs1 + PC--> RA|
-0x07 - BGE      |rs1 >= rs0 ?  PC <-- RA : PC=PC|
-0x08 - J        |rs1 --> PC - rs1|
-0x09 - ADDI     |rs1 + i --> rd|
-0x0F - End of program
+0x00 - Load(LD)          |rs1  <-- rd|
+0x01 - Store(STR)        |rs1  --> rd|
+0x02 - Add(ADD)          |rs1 + rs0 --> rd|
+0x03 - Subtract(SUB)     |rs1 - rs0 --> rd|
+0x04 - Multiply(MLT)     |rs1 * rs0 --> rd|
+0x05 - Divide(DIV)       |rs1 / rs0 --> rd|
+0x06 - LOOP(LOOP)        |rs1 + PC--> RA|
+0x07 - BGE(BGE)          |rs1 >= rs0 ?  PC <-- RA : PC = PC|
+0x08 - jump to(JI)       |i --> PC - i|
+0x09 - Add constant (ADDI)     |rs1 + i --> rd|
+0x0F - End of program(END)
 //////////////////
 RAM
 Size: 256 Bytes (64 words)
@@ -36,9 +36,9 @@ Size: 256 Bytes (64 words)
     0    => PC
     1    => RA
     2-4  => Core regs
-    5-15 => Temp regs (t0,t1,...)
+    5-15 => Temp regs (T0,T1,...)
 }
-16-31 => Data (s0,s1,...)
+16-31 => Data (S0,S1,...)
 32-64 => Program Data
 //////////////////
 */

@@ -1,5 +1,4 @@
 #include "../configure.h"
-
 class Alu
 {   
     public:
@@ -18,5 +17,5 @@ class Alu
     // divide function
     int divide(int val1, int val0);
     // branch if greater or equal
-    bool bge(int val1, int val0);
+    int bge(int val1, int val0);
 };
