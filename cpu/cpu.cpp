@@ -21,8 +21,9 @@ void Cpu::fetch()
     {
         ir.get_next_instruction();
     }
-    
-    else first_run = false; 
+
+    else
+        first_run = false;
 }
 
 void Cpu::execute_instruction()
@@ -41,6 +42,31 @@ void Cpu::execute_instruction()
     {
         int val1 = ram.read(ir.rs1);
         int val0 = ram.read(ir.rs0);
+        alu_result = alu.output_result(ir.op_code, val1, val0);
+        ram.write(ir.rd, alu_result);
+    }
+    if (ir.op_code == 6)
+    {
+        int val1 = ram.read(ir.rs1);
+        int counter = ram.read(0);
+        ram.write(ir.rd, counter + val1);
+    }
+    if (ir.op_code == 7)
+    {
+        int val1 = ram.read(ir.rs1);
+        int val0 = ram.read(ir.rs0);
+        alu_result = alu.output_result(ir.op_code, val1, val0);
+        // FINISH THIS
+    }
+    if (ir.op_code == 8)
+    {   
+        int counter = ram.read(0);
+        ram.write(0,counter - ir.rs1);
+    }
+    if (ir.op_code == 9)
+    {
+        int val1 = ram.read(ir.rs1);
+        int val0 = ir.rs0;
         alu_result = alu.output_result(ir.op_code, val1, val0);
         ram.write(ir.rd, alu_result);
     }

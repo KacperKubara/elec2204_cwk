@@ -21,6 +21,10 @@ OP Code
 0x03 - Subtract |rs1 - rs0 --> rd|
 0x04 - Multiply |rs1 * rs0 --> rd|
 0x05 - Divide   |rs1 / rs0 --> rd|
+0x06 - LOOP     |rs1 + PC--> RA|
+0x07 - BGE      |rs1 >= rs0 ?  PC = RA : PC=PC|
+0x08 - J        |rs1 --> PC - rs1|
+0x09 - ADDI     |rs1 + i --> rd|
 0x0F - End of program
 //////////////////
 RAM
@@ -28,7 +32,8 @@ Size: 256 Bytes (64 words)
 0-15  => Core Regs
 {
     0    => PC
-    1-4  => Core regs
+    1    => RA
+    2-4  => Core regs
     5-15 => Temp regs (t0,t1,...)
 }
 16-31 => Data (s0,s1,...)

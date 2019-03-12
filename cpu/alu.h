@@ -17,4 +17,6 @@ class Alu
     int multiply(int val1, int val0);
     // divide function
     int divide(int val1, int val0);
+    // branch if greater or equal
+    bool bge(int val1, int val0);
 };
