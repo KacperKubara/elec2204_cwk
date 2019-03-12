@@ -4,7 +4,6 @@ Cpu::Cpu(int count, int base_address) : ir(count, base_address), alu(), ram(true
 {
     alu_result = 0;
     first_run = true;
-    ir.get_ram(ram);
     ir.get_instruction();
 }
 

@@ -30,12 +30,14 @@ int Alu::output_result(int opcode, int val1, int val0)
     
     case 7:
         signal = 1;
-        return bge(val1, val0);
+        if(val1 >= val0) return 1;
+        else return 0;
         break;
 
     default:
         signal = 0;
         return 0;
+        break;
     }
 }
 
@@ -57,12 +59,4 @@ int Alu::multiply(int val1, int val0)
 int Alu::divide(int val1, int val0)
 {
     return val1 / val0;
-}
-
-int Alu::bge(int val1, int val0)
-{
-    if (val1 >= val0)
-        return 1;
-    else
-        return 0;
 }

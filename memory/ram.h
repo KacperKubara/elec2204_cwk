@@ -8,7 +8,7 @@ class Ram
 {
     public:
     // physical memory
-    unsigned int ram[RAM_SIZE]; // array with 0 values
+    static unsigned int ram[RAM_SIZE]; // array with 0 values
     
     // default constructor
     Ram();
@@ -19,6 +19,8 @@ class Ram
 
     // return the value of the memory cell
     int read(int n); 
+    // debug function
+    void print_all(void);
     // return true if write is successfull  
     bool write(int n, int value); 
 };

@@ -5,7 +5,7 @@ class Alu
     // 0 - wrong opcode, 1 - correct opcode, result ready   
     bool signal; 
     // constructor
-    Alu();
+    Alu();    
     // output result
     int output_result(int opcode, int val1, int val0);
     // sum function
@@ -16,6 +16,5 @@ class Alu
     int multiply(int val1, int val0);
     // divide function
     int divide(int val1, int val0);
-    // branch if greater or equal
-    int bge(int val1, int val0);
+
 };
