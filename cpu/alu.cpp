@@ -27,6 +27,11 @@ int Alu::output_result(int opcode, int val1, int val0)
         signal = 1;
         return divide(val1, val0);
         break;
+    
+    case 7:
+        signal = 1;
+        return bge(val1, val0);
+        break;
 
     default:
         signal = 0;

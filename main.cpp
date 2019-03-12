@@ -165,5 +165,5 @@ void update_program_data(int n, int data)
     read = cpu0.ram.read(n + RAM_PROGRAM_ADDRESS);
     cout << "Ram Write: " << std::hex << data << " Ram Read: " << std::hex << read << endl;
     if (!success)
-        cout << "Error when writing program data!" << endl;
+        cout << "Error when writing the program data!" << endl;
 }

@@ -4,6 +4,8 @@
 #define RAM_CORE_REGS 0// start address of core regs
 #define RAM_DATA_ADDRESS 16    // start address of data in RAM 
 #define RAM_PROGRAM_ADDRESS 32 // start address of program data in RAM
+#define PC_ADDRESS 0 //address of Program Counter
+#define RA_ADDRESS 1 // address of Return Address Register
 /*
 SPECIFICATIONS
 //////////////////
@@ -22,7 +24,7 @@ OP Code
 0x04 - Multiply |rs1 * rs0 --> rd|
 0x05 - Divide   |rs1 / rs0 --> rd|
 0x06 - LOOP     |rs1 + PC--> RA|
-0x07 - BGE      |rs1 >= rs0 ?  PC = RA : PC=PC|
+0x07 - BGE      |rs1 >= rs0 ?  PC <-- RA : PC=PC|
 0x08 - J        |rs1 --> PC - rs1|
 0x09 - ADDI     |rs1 + i --> rd|
 0x0F - End of program

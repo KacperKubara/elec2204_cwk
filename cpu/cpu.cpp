@@ -2,7 +2,6 @@
 
 Cpu::Cpu(int count, int base_address) : ir(count, base_address), alu(), ram(true)
 {
-    // fix it
     alu_result = 0;
     first_run = true;
     ir.get_ram(ram);
@@ -48,26 +47,34 @@ void Cpu::execute_instruction()
     if (ir.op_code == 6)
     {
         int val1 = ram.read(ir.rs1);
-        int counter = ram.read(0);
+        int counter = ram.read(PC_ADDRESS);
         ram.write(ir.rd, counter + val1);
     }
     if (ir.op_code == 7)
     {
         int val1 = ram.read(ir.rs1);
         int val0 = ram.read(ir.rs0);
-        alu_result = alu.output_result(ir.op_code, val1, val0);
-        // FINISH THIS
+        bool bge = alu.output_result(ir.op_code, val1, val0);
+        if(bge == true)
+        {   
+            int ra = ram.read(RA_ADDRESS);// returns value from RA reg
+            ram.write(PC_ADDRESS, ra);
+        }
+        else 
+        {
+            ;// normal program flow
+        }
     }
     if (ir.op_code == 8)
     {   
-        int counter = ram.read(0);
-        ram.write(0,counter - ir.rs1);
+        int counter = ram.read(PC_ADDRESS);
+        ram.write(PC_ADDRESS,counter - ir.rs1);
     }
     if (ir.op_code == 9)
     {
         int val1 = ram.read(ir.rs1);
         int val0 = ir.rs0;
-        alu_result = alu.output_result(ir.op_code, val1, val0);
+        alu_result = alu.output_result(2, val1, val0);
         ram.write(ir.rd, alu_result);
     }
 }
