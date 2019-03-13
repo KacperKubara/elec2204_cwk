@@ -24,7 +24,8 @@ void print_prime(void);
 int main()
 {
 
-    print_squared();
+    //print_squared();
+    print_prime();
     return 0;
 }
 
@@ -79,6 +80,8 @@ int parse_assembly(string data)
         op_code = 0x08;
     if (opcode == "ADDI")
         op_code = 0x09;
+    if (opcode == "EQ")
+        op_code = 0x0A;
     if (opcode == "END")
         op_code = 0x0F;
 
@@ -90,9 +93,10 @@ int parse_assembly(string data)
 
         if (buffer == "PC")
             temp = 0;
-        if (buffer == "RA")
+        if (buffer == "RA0")
             temp = 1;
-
+        if (buffer == "RA1")
+            temp = 2;
         if (buffer == "T0")
             temp = 5;
         if (buffer == "T1")
@@ -204,5 +208,31 @@ void print_squared(void)
 void print_prime(void)
 {
     read_data("assembly_prime.txt");
-    // Some stuff here
+        for (int i = -1; i < RAM_PROGRAM_ADDRESS - 4; i += 4)
+    {
+        cout << std::hex << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 1) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 2) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 3) << endl;
+    }
+
+    while(true)
+    {
+        cpu0.execute_cycle();
+        /*cout << endl
+             << "__________________________________" << endl;
+        cout << endl
+             << std::dec << i << " CYCLE EXECUTED" << std::hex<<endl;
+        cout << "_____FETCHED INSTRUCTION_____" << endl;
+        cout << "Counter: " << cpu0.ir.programCounter.get_counter() << endl;
+        cout << "OP: " << std::hex << cpu0.ir.op_code << " RS1: " << cpu0.ir.rs1 << " RS0: " << cpu0.ir.rs0 << " RD: " << cpu0.ir.rd << endl;
+        cout << "_____Core Regs Content_____" << endl;
+        cout << "PC: " << cpu0.ram.read(0) << " "
+             << " RA: " << cpu0.ram.read(1) << " T0: " << cpu0.ram.read(5) << " T1: " << cpu0.ram.read(6) << " T2: " << cpu0.ram.read(7) << endl;
+        cout << "____RAM DATA_____" << endl;
+        cpu0.ram.print_all();*/
+        if(cpu0.ram.read(14) == 1)
+        {
+            cout<<std::dec<<"Prime number found: "<<cpu0.ram.read(5)<<std::hex<<endl;
+            if(cpu0.ram.read(5) >= 1000) break;
+        }
+ 
+    }
 }

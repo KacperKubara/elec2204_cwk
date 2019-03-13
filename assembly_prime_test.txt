@@ -1,0 +1,23 @@
+LD T0 0 S5 // n
+LD T0 0 S5 // n
+LD T1 0 S5 // i
+LD T2 0 S6 // n_max
+LD T4 0 S2 // 1
+LD T7 0 S0 // 0
+LD T8 0 S0 // 0
+LOOP S9 0 RA0 // S9 = loop size
+BGE T0 T2 RA0 // n>=n_max?
+EQ T7 T8 T9   // 0 == T8 ? T9=1: nothing here --> flag to say that n is prime
+LD T9 0 S0    // 0 
+ADD T4 T0 T0  // n = n+1
+LD T1 0 S5    // i = 2
+LD T8 0 S5    // T8 = 0
+LOOP S10 0 RA1// S10 = loop size 
+BGE T1 T0 RA1 // i>=n?
+DIV T0 T1 T5  // int temp = n/i 
+MLT T5 T1 T6  //  int temp1 = temp*int
+EQ T6 T5 T8   // T6==T5 ? T8=1 : nothing here 
+ADD T4 T1 T1  // i++ 
+JI S7 0 0
+JI S8 0 0
+END 0 0 0 

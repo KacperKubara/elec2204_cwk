@@ -49,7 +49,7 @@ void Cpu::execute_instruction()
     {
         int loop_size = ram.read(ir.rs1);
         int pc_counter = ram.read(PC_ADDRESS);
-        ram.write(RA_ADDRESS, pc_counter + loop_size);
+        ram.write(ir.rd, pc_counter + loop_size);
     }
     if (ir.op_code == 7)
     {
@@ -58,7 +58,7 @@ void Cpu::execute_instruction()
         bool bge = alu.output_result(ir.op_code, val1, val0);
         if (bge == true)
         {
-            int ra = ram.read(RA_ADDRESS); // returns value from RA reg
+            int ra = ram.read(ir.rd); // returns value from RA reg
             ram.write(PC_ADDRESS, ra);
         }
         else
@@ -78,5 +78,19 @@ void Cpu::execute_instruction()
         int val0 = ir.rs0;
         alu_result = alu.output_result(2, val1, val0);
         ram.write(ir.rd, alu_result);
+    }
+    if (ir.op_code == 10)
+    {
+        int val1 = ram.read(ir.rs1);
+        int val0 = ram.read(ir.rs0);
+        int eq = alu.output_result(ir.op_code, val1, val0);
+        if (eq == 1)
+        {
+            ram.write(ir.rd, 1);
+        }
+        else
+        {
+            ;//ram.write(ir.rd, 0);
+        }
     }
 }

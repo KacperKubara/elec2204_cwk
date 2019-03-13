@@ -23,10 +23,11 @@ OP Code
 0x03 - Subtract(SUB)     |rs1 - rs0 --> rd|
 0x04 - Multiply(MLT)     |rs1 * rs0 --> rd|
 0x05 - Divide(DIV)       |rs1 / rs0 --> rd|
-0x06 - LOOP(LOOP)        |rs1 + PC--> RA|
-0x07 - BGE(BGE)          |rs1 >= rs0 ?  PC <-- RA : PC = PC|
+0x06 - LOOP(LOOP)        |rs1 + PC  --> rd|
+0x07 - BGE(BGE)          |rs1 >= rs0  rd?  PC <-- rd : PC = PC|
 0x08 - jump to(JI)       |i --> PC - i|
 0x09 - Add constant (ADDI)     |rs1 + i --> rd|
+0x0A - EQ(Equal)         |rs1 == rs0 rd? 1-->rd : 0-->rd|
 0x0F - End of program(END)
 //////////////////
 RAM

@@ -14,7 +14,6 @@ void Ir::get_instruction(void)
 {
     int address = programCounter.get_counter();
     int reg_content = ram.read(address);
-    std::cout<<"PC: "<< address<<" Reg_content: "<< reg_content;
     set_op(reg_content);
     set_regs(reg_content);
 }

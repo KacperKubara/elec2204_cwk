@@ -33,6 +33,12 @@ int Alu::output_result(int opcode, int val1, int val0)
         if(val1 >= val0) return 1;
         else return 0;
         break;
+            
+    case 10:
+        signal = 1;
+        if(val1 == val0) return 1;
+        else return 0;
+        break;
 
     default:
         signal = 0;
