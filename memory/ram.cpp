@@ -16,12 +16,12 @@ unsigned int Ram::ram[RAM_SIZE] =
         // MEMORY DATA - Temp Regs(5-15)
         0x00000000, 0x00000000, 0x00000000, 0x00000000,
         0x00000000, 0x00000000, 0x00000000, 0x00000000,
-        0x00000000, 0x00000000, 
+        0x00000000, 0x00000000, 0x00000000,
         // MEMORY DATA - Core Regs(16-31)
-        0x00000000, 0x00000064, 0x00000001, 0xBEEFDEAD,
-        0xDEADBEEF, 0xBEEFDEAD, 0xDEADBEEF, 0xBEEFDEAD,
-        0xDEADBEEF, 0xBEEFDEAD, 0xDEADBEEF, 0xBEEFDEAD,
-        0xDEADBEEF, 0xBEEFDEAD, 0xDEADBEEF, 0xBEEFDEAD,
+        0x00000000, 0x00000064, 0x00000001, 0x00000005,
+        0x00000004, 0x00000000, 0x00000000, 0x00000000,
+        0x00000000, 0x00000000, 0x00000000, 0x00000000,
+        0x00000000, 0x00000000, 0x00000000, 0x00000000,
         // PROGRAM DATA
         0x00000000, 0x00000000, 0x00000000, 0x00000000,
         0x00000000, 0x00000000, 0x00000000, 0x00000000,
@@ -75,7 +75,11 @@ bool Ram::write(int n, int value)
         return false;
 }
 void Ram::print_all(void)
-{   
-    for (int i = 0; i < RAM_SIZE; i+=4)
-    std::cout<<std::hex<<ram[i]<<" "<<ram[i+1]<<" "<<ram[i+2]<<" "<<ram[i+3]<<" "<<std::endl;   
+{
+    for (int i = 0; i < RAM_SIZE; i++)
+    {
+        std::cout << std::hex << ram[i] << " ";
+        if (i % 4 == 3)
+            std::cout << std::endl;
+    }
 }

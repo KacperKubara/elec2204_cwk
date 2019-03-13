@@ -14,7 +14,7 @@ void Ir::get_instruction(void)
 {
     int address = programCounter.get_counter();
     int reg_content = ram.read(address);
-    std::cout<<std::dec<<"PC: "<< address<<" Reg_content: "<< reg_content;
+    std::cout<<"PC: "<< address<<" Reg_content: "<< reg_content;
     set_op(reg_content);
     set_regs(reg_content);
 }
@@ -31,7 +31,11 @@ void Ir::set_regs(int reg_content)
     rd  = 0xFF & (reg_content);
 }
 void Ir::print_all(void)
-{   
-    for (int i = 0; i < RAM_SIZE; i+=4)
-    std::cout<<std::hex<<ram.read(i)<<" "<<ram.read(i+1)<<" "<<ram.read(i+2)<<" "<<ram.read(i+3)<<" "<<std::endl;   
+{
+    for (int i = 0; i < RAM_SIZE; i++)
+    {
+        std::cout << std::hex << ram.read(i) << " ";
+        if (i % 4 == 3)
+            std::cout << std::endl;
+    }
 }

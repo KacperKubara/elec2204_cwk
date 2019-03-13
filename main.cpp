@@ -25,7 +25,7 @@ int main()
         cout << std::hex << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 1) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 2) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 3) << endl;
     }
 
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 400; i++)
     {
         cpu0.execute_cycle();
         cout << endl
@@ -33,17 +33,14 @@ int main()
         cout << endl
              << i << " CYCLE EXECUTED" << endl;
         cout << "_____FETCHED INSTRUCTION_____" << endl;
-        cout << "Counter: "  << cpu0.ir.programCounter.get_counter() << endl;
+        cout << "Counter: " << cpu0.ir.programCounter.get_counter() << endl;
         cout << "OP: " << std::hex << cpu0.ir.op_code << " RS1: " << cpu0.ir.rs1 << " RS0: " << cpu0.ir.rs0 << " RD: " << cpu0.ir.rd << endl;
         cout << "_____Core Regs Content_____" << endl;
         cout << "PC: " << cpu0.ram.read(0) << " "
              << " RA: " << cpu0.ram.read(1) << " T0: " << cpu0.ram.read(5) << " T1: " << cpu0.ram.read(6) << " T2: " << cpu0.ram.read(7) << endl;
         cout << "____RAM DATA_____" << endl;
         cpu0.ram.print_all();
-        cout << "____IR DATA_____" << endl;
-        cpu0.ir.print_all();
-        cout << "____PC DATA_____" << endl;
-        cpu0.ir.programCounter.print_all();
+        cout<<"Squared Integer: "<<std::dec<<cpu0.ram.read(9)<<std::hex<<endl;
     }
     return 0;
 }
@@ -70,6 +67,7 @@ int parse_assembly(string data)
     istringstream s(data);
     string buffer;
     string opcode;
+    int temp_int;
     int op_code;
     int rs1;
     int rs0;
