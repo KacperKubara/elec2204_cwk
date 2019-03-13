@@ -6,10 +6,9 @@
 
 using namespace std;
 
-Ram ram0(true);
+Ram ram0;
 TEST_CASE("PC Test"){
     Pc programCounter(5, RAM_PROGRAM_ADDRESS);
-    programCounter.get_ram(ram0);
     SECTION("Counter Test 0"){
         REQUIRE(programCounter.get_counter() == 5 + RAM_PROGRAM_ADDRESS);
     }

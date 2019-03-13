@@ -4,8 +4,6 @@
 class Cpu
 {
     public:
-    // define clock Speed
-    const int clock_freq = CLOCK_SPEED;
     // alu computation result
     int alu_result;
     // flag to determine if execute_cycle is run for the 1st time

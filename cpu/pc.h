@@ -11,13 +11,12 @@ class Pc
 
     // constructor
     Pc(int count, int base_address);
-    // ram constructor
-    Ram ram;
-    // debug function
-    void print_all(void);
+
     // increments the counter
     int increment(void);
     // gets counter
     int get_counter(void);
-   
+
+    // ram constructor
+    Ram ram;   
 };

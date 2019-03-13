@@ -7,8 +7,12 @@ using namespace std;
 TEST_CASE("IR Test")
 {
     Ir instructionReg(0, RAM_PROGRAM_ADDRESS);
-    Ram ram0(true);
-    instructionReg.get_ram(ram0);
+    Ram ram0;
+    ram0.write(RAM_PROGRAM_ADDRESS, 0x02010203);
+    ram0.write(RAM_PROGRAM_ADDRESS, 0x03020104);
+    ram0.write(RAM_PROGRAM_ADDRESS, 0x04020104);
+    ram0.write(RAM_PROGRAM_ADDRESS, 0x04010205);
+    ram0.write(RAM_PROGRAM_ADDRESS, 0x04010205);
 
     SECTION("Initialisation TEST")
     {

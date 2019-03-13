@@ -1,12 +1,5 @@
 #include "ram.h"
 #include <iostream>
-Ram::Ram()
-{
-    for (int i = 0; i < RAM_SIZE; i++)
-    {
-        ram[i] = 0;
-    }
-}
 
 unsigned int Ram::ram[RAM_SIZE] = 
     { // MEMORY DATA - Core Regs(0-4)
@@ -31,32 +24,6 @@ unsigned int Ram::ram[RAM_SIZE] =
         0x00000000, 0x00000000, 0x00000000, 0x00000000,
         0x00000000, 0x00000000, 0x00000000, 0x0F000000
 };
-
-Ram::Ram(bool is_hardcoded)
-{
-    /*if (is_hardcoded)
-    {
-        for (int i = 0; i < RAM_SIZE; i++)
-        {
-            ram[i] = ram_hardcoded[i];
-        }
-    }
-
-    else
-        for (int i = 0; i < RAM_SIZE; i++)
-        {
-            ram[i] = 0;
-        }*/
-}
-
-Ram::Ram(unsigned int new_ram[RAM_SIZE])
-{
-    for (int i = 0; i < RAM_SIZE; i++)
-    {
-        ram[i] = new_ram[i];
-    }
-}
-
 
 int Ram::read(int n)
 {

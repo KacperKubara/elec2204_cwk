@@ -16,7 +16,7 @@ TEST_CASE("CPU Test")
         REQUIRE(cpu0.alu.signal == 0);
 
         // IR - Ram test
-        REQUIRE(cpu0.ir.ram.read(8) == 0xDEADBEEF);
+        REQUIRE(cpu0.ir.ram.read(8) == 0);
 
         // Ir - programCounter test
         REQUIRE(cpu0.ir.programCounter.get_counter() == RAM_PROGRAM_ADDRESS);
@@ -28,7 +28,7 @@ TEST_CASE("CPU Test")
         REQUIRE(cpu0.ram.read(3) == 10);
         // IR - Ram, PC - RAM test again
         REQUIRE(cpu0.ir.ram.read(3) == 10);
-        REQUIRE(cpu0.ir.programCounter.ram.read(8) == 0xDEADBEEF);
+        REQUIRE(cpu0.ir.programCounter.ram.read(8) == 0);
 
         SECTION("CPU Execute Cycle 1 Test - Add")
         {

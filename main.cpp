@@ -9,7 +9,7 @@ using namespace std;
 
 // globally defined cpu instance
 Cpu cpu0(0, RAM_PROGRAM_ADDRESS);
-
+Cpu cpu1(0, RAM_PROGRAM_ADDRESS);
 // read data from .txt file
 void read_data(string filename);
 // converts assembly to machine code
@@ -24,7 +24,7 @@ void print_prime(void);
 int main()
 {
 
-    //print_squared();
+    print_squared();
     print_prime();
     return 0;
 }
@@ -173,23 +173,24 @@ void update_program_data(int n, int data)
     int read;
     success = cpu0.ram.write(n + RAM_PROGRAM_ADDRESS - 1, data);
     read = cpu0.ram.read(n + RAM_PROGRAM_ADDRESS - 1);
-    cout << "Ram Write: " << std::hex << data << " Ram Read: " << std::hex << read << endl;
+    //cout << "Ram Write: " << std::hex << data << " Ram Read: " << std::hex << read << endl;
     if (!success)
         cout << "Error when writing the program data!" << endl;
 }
 
 void print_squared(void)
 {
+    int temp=0;
     read_data("assembly_squared.txt");
-    for (int i = -1; i < RAM_PROGRAM_ADDRESS - 4; i += 4)
+    /*for (int i = -1; i < RAM_PROGRAM_ADDRESS - 4; i += 4)
     {
         cout << std::hex << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 1) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 2) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 3) << endl;
-    }
+    }*/
 
-    for (int i = 0; i < 400; i++)
+    for (int i = 0; i < 40; i++)
     {
         cpu0.execute_cycle();
-        cout << endl
+        /*cout << endl
              << "__________________________________" << endl;
         cout << endl
              << i << " CYCLE EXECUTED" << endl;
@@ -200,22 +201,26 @@ void print_squared(void)
         cout << "PC: " << cpu0.ram.read(0) << " "
              << " RA: " << cpu0.ram.read(1) << " T0: " << cpu0.ram.read(5) << " T1: " << cpu0.ram.read(6) << " T2: " << cpu0.ram.read(7) << endl;
         cout << "____RAM DATA_____" << endl;
-        cpu0.ram.print_all();
-        cout << "Squared Integer: " << std::dec << cpu0.ram.read(9) << std::hex << endl;
+        cpu0.ram.print_all();*/
+        if (temp != cpu0.ram.read(9))
+        {
+            cout << "Squared Integer: " << std::dec << cpu0.ram.read(9) << std::hex << endl;
+            temp = cpu0.ram.read(9);
+        }
     }
 }
 
 void print_prime(void)
 {
     read_data("assembly_prime.txt");
-        for (int i = -1; i < RAM_PROGRAM_ADDRESS - 4; i += 4)
+    /*for (int i = -1; i < RAM_PROGRAM_ADDRESS - 4; i += 4)
     {
         cout << std::hex << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 1) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 2) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 3) << endl;
-    }
+    }*/
 
-    while(true)
+    while (true)
     {
-        cpu0.execute_cycle();
+        cpu1.execute_cycle();
         /*cout << endl
              << "__________________________________" << endl;
         cout << endl
@@ -228,11 +233,11 @@ void print_prime(void)
              << " RA: " << cpu0.ram.read(1) << " T0: " << cpu0.ram.read(5) << " T1: " << cpu0.ram.read(6) << " T2: " << cpu0.ram.read(7) << endl;
         cout << "____RAM DATA_____" << endl;
         cpu0.ram.print_all();*/
-        if(cpu0.ram.read(14) == 1)
+        if (cpu1.ram.read(14) == 1)
         {
-            cout<<std::dec<<"Prime number found: "<<cpu0.ram.read(5)<<std::hex<<endl;
-            if(cpu0.ram.read(5) >= 1000) break;
+            cout << std::dec << "Prime number found: " << cpu1.ram.read(5) << std::hex << endl;
+            if (cpu1.ram.read(5) >= 20)
+                break;
         }
- 
     }
 }
