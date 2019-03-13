@@ -27,8 +27,8 @@ OP Code
 0x06 - LOOP(LOOP)        |rs1 + PC  --> rd|
 0x07 - BGE(BGE)          |rs1 >= rs0  rd?  PC <-- rd : PC = PC|
 0x08 - jump to(JI)       |i --> PC - i|
-0x09 - Add constant (ADDI)     |rs1 + i --> rd|
-0x0A - EQ(Equal)         |rs1 == rs0 rd? 1-->rd : 0-->rd|
+0x09 - Add i (ADDI)      |rs1 + i --> rd|
+0x0A - Equal(EQ)         |rs1 == rs0 rd? 1-->rd : 0-->rd|
 0x0F - End of program(END)
 //////////////////
 RAM
