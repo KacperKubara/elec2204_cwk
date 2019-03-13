@@ -11,47 +11,30 @@ using namespace std;
 Cpu cpu0(0, RAM_PROGRAM_ADDRESS);
 
 // read data from .txt file
-void read_data(void);
+void read_data(string filename);
 // converts assembly to machine code
 int parse_assembly(string data);
 //updates the program data with machine code commands from the file
 void update_program_data(int data, int n);
+// prints squared integer
+void print_squared(void);
+// prints prime numbers
+void print_prime(void);
 
 int main()
 {
-    read_data();
-    for (int i = -1; i < RAM_PROGRAM_ADDRESS - 4; i += 4)
-    {
-        cout << std::hex << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 1) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 2) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 3) << endl;
-    }
 
-    for (int i = 0; i < 400; i++)
-    {
-        cpu0.execute_cycle();
-        cout << endl
-             << "__________________________________" << endl;
-        cout << endl
-             << i << " CYCLE EXECUTED" << endl;
-        cout << "_____FETCHED INSTRUCTION_____" << endl;
-        cout << "Counter: " << cpu0.ir.programCounter.get_counter() << endl;
-        cout << "OP: " << std::hex << cpu0.ir.op_code << " RS1: " << cpu0.ir.rs1 << " RS0: " << cpu0.ir.rs0 << " RD: " << cpu0.ir.rd << endl;
-        cout << "_____Core Regs Content_____" << endl;
-        cout << "PC: " << cpu0.ram.read(0) << " "
-             << " RA: " << cpu0.ram.read(1) << " T0: " << cpu0.ram.read(5) << " T1: " << cpu0.ram.read(6) << " T2: " << cpu0.ram.read(7) << endl;
-        cout << "____RAM DATA_____" << endl;
-        cpu0.ram.print_all();
-        cout<<"Squared Integer: "<<std::dec<<cpu0.ram.read(9)<<std::hex<<endl;
-    }
+    print_squared();
     return 0;
 }
 
-void read_data(void)
+void read_data(string filename)
 {
     string buffer;
     int temp;
     int i = 0;
     ifstream file;
-    file.open("assembly.txt", ios::out | ios::in);
+    file.open(filename, ios::out | ios::in);
     while (getline(file, buffer))
     {
         if (i >= 31)
@@ -189,4 +172,37 @@ void update_program_data(int n, int data)
     cout << "Ram Write: " << std::hex << data << " Ram Read: " << std::hex << read << endl;
     if (!success)
         cout << "Error when writing the program data!" << endl;
+}
+
+void print_squared(void)
+{
+    read_data("assembly_squared.txt");
+    for (int i = -1; i < RAM_PROGRAM_ADDRESS - 4; i += 4)
+    {
+        cout << std::hex << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 1) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 2) << " " << cpu0.ram.read(RAM_PROGRAM_ADDRESS + i + 3) << endl;
+    }
+
+    for (int i = 0; i < 400; i++)
+    {
+        cpu0.execute_cycle();
+        cout << endl
+             << "__________________________________" << endl;
+        cout << endl
+             << i << " CYCLE EXECUTED" << endl;
+        cout << "_____FETCHED INSTRUCTION_____" << endl;
+        cout << "Counter: " << cpu0.ir.programCounter.get_counter() << endl;
+        cout << "OP: " << std::hex << cpu0.ir.op_code << " RS1: " << cpu0.ir.rs1 << " RS0: " << cpu0.ir.rs0 << " RD: " << cpu0.ir.rd << endl;
+        cout << "_____Core Regs Content_____" << endl;
+        cout << "PC: " << cpu0.ram.read(0) << " "
+             << " RA: " << cpu0.ram.read(1) << " T0: " << cpu0.ram.read(5) << " T1: " << cpu0.ram.read(6) << " T2: " << cpu0.ram.read(7) << endl;
+        cout << "____RAM DATA_____" << endl;
+        cpu0.ram.print_all();
+        cout << "Squared Integer: " << std::dec << cpu0.ram.read(9) << std::hex << endl;
+    }
+}
+
+void print_prime(void)
+{
+    read_data("assembly_prime.txt");
+    // Some stuff here
 }
