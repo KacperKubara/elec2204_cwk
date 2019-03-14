@@ -17,18 +17,18 @@ TEST_CASE("IR Test")
     SECTION("Initialisation TEST")
     {
         instructionReg.get_instruction();
-        REQUIRE(instructionReg.op_code == 2);
+        REQUIRE(instructionReg.op_code == 4);
         REQUIRE(instructionReg.rs1 == 1);
         REQUIRE(instructionReg.rs0 == 2);
-        REQUIRE(instructionReg.rd == 3);
+        REQUIRE(instructionReg.rd == 5);
     }
     SECTION("get_next_instruction TEST0")
     {
         instructionReg.get_next_instruction();
-        REQUIRE(instructionReg.op_code == 3);
-        REQUIRE(instructionReg.rs1 == 2);
-        REQUIRE(instructionReg.rs0 == 1);
-        REQUIRE(instructionReg.rd == 4);
+        REQUIRE(instructionReg.op_code == 0);
+        REQUIRE(instructionReg.rs1 == 0);
+        REQUIRE(instructionReg.rs0 == 0);
+        REQUIRE(instructionReg.rd == 0);
 
         SECTION("get_next_instruction TEST1")
         {
